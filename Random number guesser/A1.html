@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+"use strict"
+<html lang="en">
+<head>
+    <meta charset="UTF-8">	
+    <title>Assignment 1</title>
+    <script>
+        //Variable declarations
+        var entry;
+        var skip;
+        var correct = 0;
+        var ran =  Math.floor(Math.random() * (10)) + 1;
+
+        //Preset this variable to y when decalred so that the while loop will run
+        var again = "y";
+
+        //Run program useing a do while loop for multiple multiple entries/conversions
+        do{
+            //Display a prompt that gets the user to input a number, or to quit the program
+	        entry = prompt("Guess from 1 to 10 or type q to quit hint: " + ran);
+
+            //Display quitter alert if the user types q to quit
+            if (entry == "q") {
+                alert("quitter...");
+
+                //Implement the skip variable so that the program will jump down to data validation
+                skip = "skip";
+            }
+
+            //Parse the entry variable if the user decides to not quit
+            else {
+                entry = parseInt(entry);
+            }
+
+            //Tell the user thier results
+            if (entry < ran && skip != "skip") {
+                alert("You guessed too low");
+            }
+            else if (entry > ran && skip != "skip") {
+                alert("You guessed too high");
+            }
+            else if (entry == ran && skip != "skip") {
+                alert("You guessed correctly!")
+
+                //Add +1 for every time the user gets the answer correct
+                correct = correct + 1;
+
+                //Generate new number
+                ran =  Math.floor(Math.random() * (10)) + 1;
+
+                //Ask if the user wants to play again
+                again = prompt("Would you like to play again? y for yes, anything else for no");
+            }
+
+            //Run data validation
+            else if (entry != "q") {
+                alert("invalid guess");
+            }
+
+            //Display the number of times the user got the answer correct
+            if (entry == "q" || again != "y" ) {
+                alert("You guessed correctly " + correct + " times.")
+            } 
+        }
+        while (entry != "q" && again == "y");
+    </script>
+</head>
+<body>
+    <main>
+        <!-- Will show after the script has run -->
+        <h1>Assignment 1</h1>
+    </main>
+</body>
+</html>
